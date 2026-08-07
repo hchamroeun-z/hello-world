@@ -9,20 +9,28 @@
                     <p class="login-box-msg">Sign in to start your session</p>
                     <form>
                         <div class="input-group mb-3">
-                            <input type="email" class="form-control" placeholder="Email" />
+                            <input type="email" v-model="user.email" class="form-control" placeholder="Email"
+                            :class="{ 'is-invalid':!!userError.email}" />
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-envelope"></span>
                                 </div>
                             </div>
                         </div>
+                        <div class="invalid-feedback">
+                            {{ userError.email }}
+                        </div>
                         <div class="input-group mb-3">
-                            <input type="password" class="form-control" placeholder="Password" autocomplete />
+                            <input type="password" v-model="user.password" class="form-control" placeholder="Password" autocomplete
+                            :class="{'is-invalid':!!userError.password}" />
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-lock"></span>
                                 </div>
                             </div>
+                        </div>
+                        <div class="invalid-feedback">
+                            {{ userError.password }}
                         </div>
                         <div class="row">
                             <div class="col-8"></div>
@@ -41,16 +49,19 @@
     </div>
 </template>
 <script setup>
-import { useRouter } from 'vue-router';
-const router =useRouter();
+import {ref,reactive} from "vue"
 
-function goToDashboard() {
-    router.replace('/dashboard')
+const user=reactive({
+    email: "",
+    password:""
+})
+
+let userError=reactive({
+    email: "",
+    password:""
+});
+
+async function signIn() {
+    console.log("signIn");
 }
-
-// replace to a named route
-function goToSignUp() {
-    router.replace({ name: 'SignUp' })
-}
-
 </script>

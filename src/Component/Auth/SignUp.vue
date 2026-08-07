@@ -9,7 +9,8 @@
                     <p class="login-box-msg">Sign up for a new membership</p>
                     <form>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Name" />
+                            <input type="text" v-model="user.name" class="form-control" placeholder="Name"
+                            :class="{'is-invalid':!!userErr.name}" />
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-user"></span>
@@ -17,7 +18,8 @@
                             </div>
                         </div>
                         <div class="input-group mb-3">
-                            <input type="email" class="form-control" placeholder="Email" />
+                            <input type="email" v-model="user.email" class="form-control" placeholder="Email" 
+                            :class="{'is-invalid':!!userErr.email}"/>
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-envelope"></span>
@@ -25,7 +27,8 @@
                             </div>
                         </div>
                         <div class="input-group mb-3">
-                            <input type="password" class="form-control" placeholder="Password" autocomplete />
+                            <input type="password" v-model="user.password" class="form-control" placeholder="Password" autocomplete 
+                            :class="{'is-invalid':!!userErr.password}"/>
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-lock"></span>
@@ -33,7 +36,7 @@
                             </div>
                         </div>
                         <div class="input-group mb-3">
-                            <input type="password" class="form-control" placeholder="Confirm Password" autocomplete />
+                            <input type="password" v-model="user.confirm_p" class="form-control" placeholder="Confirm Password" autocomplete />
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-lock"></span>
@@ -57,17 +60,21 @@
     </div>
 </template>
 <script setup>
-import { useRouter } from 'vue-router'
-const router = useRouter()
+import { reactive } from 'vue';
 
-// push to a path
-function goToDashboard() {
-    router.push('/dashboard')
+let user = reactive({
+    name:"",
+    email:"",
+    password:"",
+    confirm_p:""
+})
+
+let userErr=reactive({
+     name:"",
+    email:"",
+    password:""
+})
+async function signUp() {
+    console.log("signUp");
 }
-
-// push to a named route
-function goToSignIn() {
-    router.push({ name: 'SignIn' })
-}
-
 </script>

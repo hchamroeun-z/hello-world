@@ -1,7 +1,10 @@
 <script setup></script>
 
 <template>
-  <router-view />
+  <RouterView name="navbar" />
+  <RouterView name="sidebar" />
+  <RouterView name="default" />
+  <RouterView name="footor" />
 </template>
 
 <style scoped></style>

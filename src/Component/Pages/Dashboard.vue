@@ -104,18 +104,4 @@
 </template>
 <script setup>
 
-
-import { useRouter } from 'vue-router'
-const router = useRouter()
-
-function goBack() {
-    // router.back(); // option 1
-    router.go(-1); // option 2
-}
-
-function goForward() {
-    // router.forward(); // option 1
-    router.go(1); // option 2
-}
-
 </script>

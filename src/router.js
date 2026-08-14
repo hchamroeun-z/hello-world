@@ -22,7 +22,7 @@ const route=[
     {
         path: "/dashboard",
         name: "Dashboard",
-        component: {
+        components: {
             navbar:navbar,
             sidebar:sidebar,
             footor:footor,

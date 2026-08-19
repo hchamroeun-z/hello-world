@@ -8,6 +8,14 @@ export async function apiSignup(user) {
 export async function apiSignin(user) {
     return await axios.post(app_api_url+'/signin',user);
 }
+export async function apiSignOut(token) {
+    return await axios.post(APP_API_URL + '/signout', null, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+}
+
 export async function apiVerify(user) {
     return await axios.get(APP_API_URL + '/verify', {
         headers: {

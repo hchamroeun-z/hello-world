@@ -31,6 +31,12 @@
                             </p>
                         </RouterLink>
                     </li>
+                     <li class="nav-item">
+                        <router-link :to="{ name: 'Test' }" active-class="active" class="nav-link">
+                            <i class="nav-icon fas fa-vial"></i>
+                            <p>Tests</p>
+                        </router-link>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

@@ -60,14 +60,14 @@ const userStore = useUserStore();
 const user=reactive({
     email: "",
     password:""
-})
+});
 
-let userError=reactive({
+const userError=reactive({
     email: "",
     password:""
 });
 
-const route =useRouter();
+const router =useRouter();
 const defaultUser=JSON.parse(JSON.stringify(user));
 const defaultErr=JSON.parse(JSON.stringify(userError));
 
@@ -87,7 +87,8 @@ async function signIn() {
         userStore.setSanctumToken(data.token);
 
         resetState();
-        route.replace({name:"Dashboard"});
+        router.replace({name:"Dashboard"});
+        // console.log("hello")
         return CloseModal();
     }catch(error){
         const {response}=error;
@@ -100,7 +101,7 @@ async function signIn() {
                 userError[key] = data.errors[key]
                     ? data.errors[key][0]
                     : "";
-                     console.log(data.errors);
+                    //  console.log(data.errors);
             });
             return CloseModal();
         }

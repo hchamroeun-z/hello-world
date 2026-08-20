@@ -3,6 +3,7 @@ import SignUp from "./Component/Auth/SignUp.vue";
 import SignOut from "./Component/Auth/SignOut.vue";
 import Dashboard from "./Component/Pages/Dashboard.vue";
 import Profile from "./Component/Auth/Profile.vue";
+import Test from "./Component/Pages/test.vue";
 
 import navbar from "@/Component/include/Nav.vue"
 import sidebar from "@/Component/include/Side.vue"
@@ -39,7 +40,7 @@ const route=[
             footor:footor,
             default:Dashboard
             
-        },meta: { guarded: false }
+        },meta: { guarded: true }
     },
     {
         path: "/profile",
@@ -50,7 +51,18 @@ const route=[
             footor:footor,
             default:Profile
         },
-        meta:{guarded:false}
+        meta:{guarded:true}
+    },
+    {
+        path: "/test",
+        name: "Test",
+        components: {
+            navbar:navbar,
+            sidebar:sidebar,
+            footor:footor,
+            default:Test
+        },
+        meta:{guarded:true}
     },
     {path: "/:pathMatch(.*)*",redirect:{name: "SignIn"}}
 ];

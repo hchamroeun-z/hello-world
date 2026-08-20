@@ -9,17 +9,17 @@ export async function apiSignin(user) {
     return await axios.post(app_api_url+'/signin',user);
 }
 export async function apiSignOut(token) {
-    return await axios.post(APP_API_URL + '/signout', null, {
+    return await axios.post(app_api_url + '/signout', null, {
         headers: {
             Authorization: `Bearer ${token}`
         }
     });
 }
 
-export async function apiVerify(user) {
-    return await axios.get(APP_API_URL + '/verify', {
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
-    });
+export async function apiVerify() {
+    return await axios.get(app_api_url + '/verify');
+}
+
+export async function apiChangePassword(current_password, new_password, new_password_confirmation) {
+    return await axios.put(app_api_url + '/change/password', { current_password, new_password, new_password_confirmation });
 }

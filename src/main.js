@@ -8,10 +8,28 @@ import { useUserStore } from '@/stores/user';
 import { apiVerify } from '@/functions/api/auth';
 import { createPinia } from 'pinia'
 import axios from 'axios';
+import { createI18n } from 'vue-i18n'
+
+const i18n = createI18n({
+  locale: 'kh',
+  fallbackLocale: 'en',
+  messages: {
+    en: {
+      message: {
+        hello: 'Starter Page'
+      }
+    },
+    kh: {
+      message: {
+        hello: 'ទំព័រដើ​ម'
+      }
+    }
+  }
+})
 
 const pinia = createPinia();
 
-createApp(App).use(router).use(pinia).mount('#app')
+createApp(App).use(router).use(i18n).use(pinia).mount('#app')
 
 const userStore = useUserStore();
 

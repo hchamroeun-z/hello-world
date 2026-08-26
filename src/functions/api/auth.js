@@ -23,3 +23,12 @@ export async function apiVerify() {
 export async function apiChangePassword(current_password, new_password, new_password_confirmation) {
     return await axios.put(app_api_url + '/change/password', { current_password, new_password, new_password_confirmation });
 }
+export async function apiUpdateProfileImage(image) {
+  const formData = new FormData();
+  formData.append("profile_image", image);
+  formData.append("_method", "PUT");
+  return await axios.post(app_api_url + "/update/profile-image", formData);
+}
+export async function apiDeleteProfileImage() {
+  return await axios.delete(app_api_url + "/delete/profile-image");
+}
